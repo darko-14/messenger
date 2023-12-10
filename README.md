@@ -11,7 +11,7 @@ Frontend:
 
     pages: 
         - Login & Register
-            - Form
+            - Form - check Tailwind templates
             - Validation
             - Snackbar
         - Menu
