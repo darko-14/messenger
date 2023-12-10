@@ -2,12 +2,29 @@ MESSENGER APP
 
 Frontend: 
     - React js - create-react-app
-    - React router
     - Typescript
-    - SCSS
     - Auth
+    - SCSS
     - MUI?
     - Responsiveness
+
+
+    pages: 
+        - Login & Register
+            - Form
+            - Validation
+            - Snackbar
+        - Menu
+            - List of online users
+            - List of rooms
+            - Option to create a room
+
+        - Chat
+            - Messages 
+            - Text Input
+            - Attachments
+            - Emojis
+
 
 Backend: 
     - Node js 
@@ -17,7 +34,7 @@ Backend:
     - Strategy Design Pattern
 
 Storage:
-    - DB for nessages 
+    - DB for nessages - MongoDB?
     - AWS S3 for attachments
 
 DEPLOYMENT: 
