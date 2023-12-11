@@ -38,7 +38,7 @@ Backend:
     - Strategy Design Pattern
 
 Storage:
-    - DB for nessages - MongoDB?
+    - DB for nessages - SQLite
     - AWS S3 for attachments
 
 DEPLOYMENT: 
