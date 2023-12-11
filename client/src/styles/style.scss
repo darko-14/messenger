@@ -1,3 +1,6 @@
+$primary_color: #00b7ff;
+$default_border: 1px solid lightgrey;
+
 body {
   margin: 0;
   padding: 0;
@@ -20,22 +23,65 @@ body {
 
 .header {
   padding: 15px;
-  border-bottom: 1px solid lightgray;
+  border-bottom: $default_border;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .logo {
+  color: $primary_color;
   font-size: 19px;
   font-weight: 700;
 }
 
 .user {
-  color: blue;
+  color: #00b7ff;
   font-weight: 600;
 }
 
 .main {
-  padding: 15px;
+  padding: 10px;
+}
+
+.register {
+
+}
+
+.menu {
+  main {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+}
+
+.users {
+  border: $default_border;
+  height: 400px;
+}
+
+.rooms {
+  border: $default_border;
+  height: 400px;
+}
+
+.new_room {
+  border: $default_border;
+  margin: 10px 0;
+  height: 95px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.new_room:hover {
+  background-color: rgb(221, 239, 245);
+  border: 2px solid lightgrey;
+  cursor: pointer;
+}
+
+.members {
+  border: $default_border;
 }
