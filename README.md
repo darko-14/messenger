@@ -22,7 +22,9 @@ Frontend:
 
         - Chat
             - Members
-            - Messages 
+            - Messages
+            - Edit message
+            - Delete message 
             - Text Input
             - Attachments
             - Emojis
