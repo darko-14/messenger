@@ -4,6 +4,8 @@ import Login from "./pages/Auth/Login"
 import Register from "./pages/Auth/Register"
 import Menu from "./pages/Menu/Menu"
 import Chat from "./pages/Chat/Chat"
+import { UserType } from "./types/types"
+import UserContext from "./context/UserContext"
 
 type PropsType = {}
 
@@ -13,11 +15,19 @@ type StateType = {
 
 class App extends React.Component<PropsType, StateType> {
 
+  private fakeUser: UserType
+
   constructor(props: any) {
     super(props)
     this.state = {
       user: null
     }
+
+    this.fakeUser = {
+        username: "Darko",
+        isAdmin: true
+    }
+
   }
 
     render(): React.ReactNode {
@@ -31,11 +41,13 @@ class App extends React.Component<PropsType, StateType> {
         )
       }
         return (
+          <UserContext.Provider value={this.fakeUser}>
             <Routes>
               <Route path="*" element={<Navigate replace to="/menu" />}/>
               <Route path="/menu" element={<Menu />}/>
               <Route path="/chat" element={<Chat />}/>
             </Routes>
+          </UserContext.Provider>
         )
     }
 
