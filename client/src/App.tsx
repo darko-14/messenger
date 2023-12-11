@@ -6,6 +6,7 @@ import Menu from "./pages/Menu/Menu"
 import Chat from "./pages/Chat/Chat"
 import { UserType } from "./types/types"
 import UserContext from "./context/UserContext"
+import './styles/style.scss'
 
 type PropsType = {}
 
@@ -33,22 +34,31 @@ class App extends React.Component<PropsType, StateType> {
     render(): React.ReactNode {
       if (!this.state.user) {
         return (
-            <Routes>
-              {!this.state.user && <Route path="*" element={<Navigate replace to="/login" />}/>}
-              <Route path="/login" element={<Login />}/>
-              <Route path="/register" element={<Register />}/>
-            </Routes>
+          <div className="app">
+            <div className="header">
+              <div className="logo">Messenger</div>
+              <div className="user">{this.fakeUser.username}</div>
+            </div>
+            <div className="main">
+              {
+                !this.state.user ? 
+                <Routes>
+                  {!this.state.user && <Route path="*" element={<Navigate replace to="/login" />}/>}
+                  <Route path="/login" element={<Login />}/>
+                  <Route path="/register" element={<Register />}/>
+                </Routes> :
+                <UserContext.Provider value={this.fakeUser}>
+                  <Routes>
+                    <Route path="*" element={<Navigate replace to="/menu" />}/>
+                    <Route path="/menu" element={<Menu />}/>
+                    <Route path="/chat" element={<Chat />}/>
+                  </Routes>
+                </UserContext.Provider>
+              }
+            </div>
+          </div>
         )
       }
-        return (
-          <UserContext.Provider value={this.fakeUser}>
-            <Routes>
-              <Route path="*" element={<Navigate replace to="/menu" />}/>
-              <Route path="/menu" element={<Menu />}/>
-              <Route path="/chat" element={<Chat />}/>
-            </Routes>
-          </UserContext.Provider>
-        )
     }
 
 }
