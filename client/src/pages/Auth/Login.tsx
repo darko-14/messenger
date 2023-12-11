@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import LoginIcon from "@mui/icons-material/Login";
 import {
   Container,
-  CssBaseline,
   Box,
   Typography,
   TextField,
@@ -12,10 +12,38 @@ import {
   Grid,
 } from "@mui/material";
 
-class Login extends React.Component {
-  handleSubmit = () => {};
+type PropTypes = {
+  enterAsGuest: () => void;
+  login: ({
+    username,
+    password,
+  }: {
+    username: string;
+    password: string;
+  }) => void;
+};
 
-  enterAsGuest = () => {};
+type StateTypes = {
+  username: string;
+  password: string;
+};
+
+class Login extends React.Component<PropTypes, StateTypes> {
+  constructor(props: PropTypes) {
+    super(props);
+    this.state = {
+      username: "",
+      password: "",
+    };
+  }
+
+  handleSubmit = () => {
+    this.props.login(this.state);
+  };
+
+  enterAsGuest = () => {
+    this.props.enterAsGuest();
+  };
 
   render(): React.ReactNode {
     return (
@@ -32,31 +60,24 @@ class Login extends React.Component {
             Sign in
           </Typography>
 
-          <Box
-            component="form"
-            onSubmit={this.handleSubmit}
-            noValidate
-            sx={{ mt: 5 }}
-          >
+          <Box sx={{ mt: 5 }}>
             <TextField
+              value={this.state.username}
+              onChange={(e) => this.setState({ username: e.target.value })}
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              label="Username"
               autoFocus
             />
             <TextField
+              value={this.state.password}
+              onChange={(e) => this.setState({ password: e.target.value })}
               margin="normal"
               required
               fullWidth
-              name="password"
               label="Password"
               type="password"
-              id="password"
-              autoComplete="current-password"
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -67,36 +88,32 @@ class Login extends React.Component {
               type="submit"
               fullWidth
               variant="contained"
+              onClick={this.handleSubmit}
               sx={{ mt: 5, mb: 4 }}
+              startIcon={<LoginIcon />}
             >
               Sign In
             </Button>
-
-           <div>Don't have an account?</div>
-            <Grid container mb={2} gap={2}>
-              <Grid item xs>
-                <Button
-                  onClick={this.enterAsGuest}
-                  fullWidth
-                  variant="outlined"
-                  sx={{ mt: 1, mb: 4 }}
-                >
-                  <Link to="/register">Sign Up</Link>
-                </Button>
-              </Grid>
-              <Grid item xs>
-                <Button
-                  onClick={this.enterAsGuest}
-                  fullWidth
-                  variant="outlined"
-                  sx={{ mt: 1, mb: 4 }}
-                >
-                  Enter as a Guest
-                </Button>
-              </Grid>
-            </Grid>
           </Box>
         </Box>
+        <div>Don't have an account?</div>
+        <Grid container mb={2} gap={2}>
+          <Grid item xs>
+            <Button fullWidth variant="outlined" sx={{ mt: 1, mb: 4 }}>
+              <Link to="/register">Sign Up</Link>
+            </Button>
+          </Grid>
+          <Grid item xs>
+            <Button
+              onClick={this.enterAsGuest}
+              fullWidth
+              variant="outlined"
+              sx={{ mt: 1, mb: 4 }}
+            >
+              Enter as a Guest
+            </Button>
+          </Grid>
+        </Grid>
       </Container>
     );
   }

@@ -1,6 +1,7 @@
 import React from "react";
 import "../../styles/style.scss";
 import { Link } from "react-router-dom";
+import PersonIcon from "@mui/icons-material/Person";
 import {
   Container,
   Box,
@@ -13,7 +14,13 @@ import {
 } from "@mui/material";
 
 type PropTypes = {
-  registerUser: () => void;
+  registerUser: ({
+    username,
+    password,
+  }: {
+    username: string;
+    password: string;
+  }) => void;
 };
 
 type StateTypes = {
@@ -32,7 +39,12 @@ class Register extends React.Component<PropTypes, StateTypes> {
     };
   }
 
-  handleSubmit = () => {};
+  handleSubmit = () => {
+    this.props.registerUser({
+      username: this.state.username,
+      password: this.state.password,
+    });
+  };
 
   render(): React.ReactNode {
     return (
@@ -52,7 +64,7 @@ class Register extends React.Component<PropTypes, StateTypes> {
           <Box
             component="form"
             onSubmit={this.handleSubmit}
-            noValidate
+            // noValidate
             sx={{ mt: 2 }}
           >
             <TextField
@@ -61,10 +73,9 @@ class Register extends React.Component<PropTypes, StateTypes> {
               margin="normal"
               required
               fullWidth
-              id="email"
+              id="username"
               label="Username"
               autoComplete="username"
-              autoFocus
             />
             <TextField
               value={this.state.password}
@@ -85,7 +96,6 @@ class Register extends React.Component<PropTypes, StateTypes> {
               margin="normal"
               required
               fullWidth
-              error
               label="Confirm Password"
               type="password"
               id="confirm_password"
@@ -99,27 +109,25 @@ class Register extends React.Component<PropTypes, StateTypes> {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 4 }}
+              sx={{ mt: 1, mb: 4 }}
+              startIcon={<PersonIcon />}
             >
               Sign Up
             </Button>
-
-            <div>Already have an account?</div>
-            <Grid container mb={2} gap={2}>
-              <Grid item xs>
-                <Button
-                  onClick={this.handleSubmit}
-                  fullWidth
-                  variant="outlined"
-                  sx={{ mt: 1, mb: 4 }}
-                >
-                  <Link to="/login">Sign In</Link>
-                </Button>
-              </Grid>
-            </Grid>
-
           </Box>
         </Box>
+        <div>Already have an account?</div>
+        <Grid container mb={2} gap={2}>
+          <Grid item xs>
+            <Button
+              fullWidth
+              variant="outlined"
+              sx={{ mt: 1, mb: 4 }}
+            >
+              <Link to="/login">Sign In</Link>
+            </Button>
+          </Grid>
+        </Grid>
       </Container>
     );
   }

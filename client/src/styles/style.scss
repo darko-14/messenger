@@ -33,6 +33,10 @@ body {
   color: $primary_color;
   font-size: 19px;
   font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3px;
 }
 
 .user {
@@ -84,4 +88,11 @@ body {
 
 .members {
   border: $default_border;
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
 }
