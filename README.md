@@ -21,6 +21,7 @@ Frontend:
             - Option to create a room
 
         - Chat
+            - Members
             - Messages 
             - Text Input
             - Attachments
