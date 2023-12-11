@@ -1,93 +1,118 @@
 import React from "react";
 import "../../styles/style.scss";
 import { Link } from "react-router-dom";
+import {
+  Container,
+  Box,
+  Typography,
+  TextField,
+  FormControlLabel,
+  Checkbox,
+  Button,
+  Grid,
+} from "@mui/material";
 
-class Register extends React.Component {
+type PropTypes = {
+  registerUser: () => void;
+};
+
+type StateTypes = {
+  username: string;
+  password: string;
+  confirm_password: string;
+};
+
+class Register extends React.Component<PropTypes, StateTypes> {
+  constructor(props: PropTypes) {
+    super(props);
+    this.state = {
+      username: "",
+      password: "",
+      confirm_password: "",
+    };
+  }
+
+  handleSubmit = () => {
+    
+  };
+
   render(): React.ReactNode {
     return (
-      <div className="register">
-        <h3>Register</h3>
-        <br />
-        <Link to="/login">login</Link>
-        <br />
-
-        <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-  <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-   
-    <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-      Sign in to your account
-    </h2>
-  </div>
-  <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-    <form className="space-y-6" action="#" method="POST">
-      <div>
-        <label
-          htmlFor="email"
-          className="block text-sm font-medium leading-6 text-gray-900"
+      <Container component="main" maxWidth="xs">
+        <Box
+          sx={{
+            marginTop: 4,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
         >
-          Email address
-        </label>
-        <div className="mt-2">
-          <input
-            id="email"
-            name="email"
-            type="email"
-            autoComplete="email"
-            required
-            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-          />
-        </div>
-      </div>
-      <div>
-        <div className="flex items-center justify-between">
-          <label
-            htmlFor="password"
-            className="block text-sm font-medium leading-6 text-gray-900"
+          <Typography component="h1" variant="h4">
+            Sign up
+          </Typography>
+
+          <Box
+            component="form"
+            onSubmit={this.handleSubmit}
+            noValidate
+            sx={{ mt: 2 }}
           >
-            Password
-          </label>
-          <div className="text-sm">
-            <a
-              href="#"
-              className="font-semibold text-indigo-600 hover:text-indigo-500"
+            <TextField
+              value={this.state.username}
+              onChange={(e) => this.setState({ username: e.target.value })}
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Username"
+              autoComplete="username"
+              autoFocus
+            />
+            <TextField
+              value={this.state.password}
+              onChange={(e) => this.setState({ password: e.target.value })}
+              margin="normal"
+              required
+              fullWidth
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="password"
+            />
+            <TextField
+              value={this.state.confirm_password}
+              onChange={(e) =>
+                this.setState({ confirm_password: e.target.value })
+              }
+              margin="normal"
+              required
+              fullWidth
+              error
+              label="Confirm Password"
+              type="password"
+              id="confirm_password"
+              autoComplete="confirm_password"
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 4 }}
             >
-              Forgot password?
-            </a>
-          </div>
-        </div>
-        <div className="mt-2">
-          <input
-            id="password"
-            name="password"
-            type="password"
-            autoComplete="current-password"
-            required
-            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-          />
-        </div>
-      </div>
-      <div>
-        <button
-          type="submit"
-          className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        >
-          Sign in
-        </button>
-      </div>
-    </form>
-    <p className="mt-10 text-center text-sm text-gray-500">
-      Not a member?
-      <a
-        href="#"
-        className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-      >
-        Start a 14 day free trial
-      </a>
-    </p>
-  </div>
-</div>
-
-      </div>
+              Sign Up
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                <Link to="/login">Already have an account? Sign In</Link>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+      </Container>
     );
   }
 }

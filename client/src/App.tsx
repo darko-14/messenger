@@ -31,6 +31,8 @@ class App extends React.Component<PropsType, StateType> {
 
   }
 
+  registerUser = () => {}
+
     render(): React.ReactNode {
         return (
         <div className="app">
@@ -44,7 +46,7 @@ class App extends React.Component<PropsType, StateType> {
               <Routes>
                 {!this.state.user && <Route path="*" element={<Navigate replace to="/login" />}/>}
                 <Route path="/login" element={<Login />}/>
-                <Route path="/register" element={<Register />}/>
+                <Route path="/register" element={<Register registerUser={this.registerUser}/>}/>
               </Routes> :
               <UserContext.Provider value={this.fakeUser}>
                 <Routes>

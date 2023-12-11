@@ -64,13 +64,13 @@ class Login extends React.Component {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 5, mb: 2 }}
+              sx={{ mt: 5, mb: 4 }}
             >
               Sign In
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link to="/register">{"Don't have an account? Sign Up"}</Link>
+                <Link to="/register">Don't have an account? Sign Up</Link>
               </Grid>
             </Grid>
           </Box>
