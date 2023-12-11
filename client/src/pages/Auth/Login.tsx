@@ -15,6 +15,8 @@ import {
 class Login extends React.Component {
   handleSubmit = () => {};
 
+  enterAsGuest = () => {};
+
   render(): React.ReactNode {
     return (
       <Container component="main" maxWidth="xs">
@@ -60,6 +62,7 @@ class Login extends React.Component {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
+
             <Button
               type="submit"
               fullWidth
@@ -68,9 +71,28 @@ class Login extends React.Component {
             >
               Sign In
             </Button>
-            <Grid container>
+
+           <div>Don't have an account?</div>
+            <Grid container mb={2} gap={2}>
               <Grid item xs>
-                <Link to="/register">Don't have an account? Sign Up</Link>
+                <Button
+                  onClick={this.enterAsGuest}
+                  fullWidth
+                  variant="outlined"
+                  sx={{ mt: 1, mb: 4 }}
+                >
+                  <Link to="/register">Sign Up</Link>
+                </Button>
+              </Grid>
+              <Grid item xs>
+                <Button
+                  onClick={this.enterAsGuest}
+                  fullWidth
+                  variant="outlined"
+                  sx={{ mt: 1, mb: 4 }}
+                >
+                  Enter as a Guest
+                </Button>
               </Grid>
             </Grid>
           </Box>

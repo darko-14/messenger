@@ -32,9 +32,7 @@ class Register extends React.Component<PropTypes, StateTypes> {
     };
   }
 
-  handleSubmit = () => {
-    
-  };
+  handleSubmit = () => {};
 
   render(): React.ReactNode {
     return (
@@ -105,11 +103,21 @@ class Register extends React.Component<PropTypes, StateTypes> {
             >
               Sign Up
             </Button>
-            <Grid container>
+
+            <div>Already have an account?</div>
+            <Grid container mb={2} gap={2}>
               <Grid item xs>
-                <Link to="/login">Already have an account? Sign In</Link>
+                <Button
+                  onClick={this.handleSubmit}
+                  fullWidth
+                  variant="outlined"
+                  sx={{ mt: 1, mb: 4 }}
+                >
+                  <Link to="/login">Sign In</Link>
+                </Button>
               </Grid>
             </Grid>
+
           </Box>
         </Box>
       </Container>
