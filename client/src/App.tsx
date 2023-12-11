@@ -40,7 +40,7 @@ class App extends React.Component<PropsType, StateType> {
           </div>
           <div className="main">
             {
-              this.state.user ? 
+              !this.state.user ? 
               <Routes>
                 {!this.state.user && <Route path="*" element={<Navigate replace to="/login" />}/>}
                 <Route path="/login" element={<Login />}/>
