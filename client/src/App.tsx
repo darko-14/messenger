@@ -9,6 +9,7 @@ import UserContext from "./context/UserContext";
 import "./styles/style.scss";
 import ModeCommentIcon from "@mui/icons-material/ModeComment";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { post } from "./api/api";
 
 type PropsType = {};
 
@@ -39,17 +40,7 @@ class App extends React.Component<PropsType, StateType> {
     password: string;
   }) => {
 
-    const response = await fetch('/api/auth', {
-      method: 'POST',
-      headers: {
-        "Content-Type": 'application/json'
-      },
-      body: {
-        name: 'Darko'
-      }
-
-      
-    })
+    // post()
 
     alert("register:" + username);
   };
